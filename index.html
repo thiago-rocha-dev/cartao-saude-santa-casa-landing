@@ -360,6 +360,8 @@
   @media (max-width:640px){
     .wrap{padding:0 18px;}
 
+    header.site{position:fixed;top:0;left:0;right:0;width:100%;}
+    body{padding-top:66px;}
     header.site .wrap{height:66px;gap:10px;}
     .brand{gap:9px;}
     .brand-mark{width:32px;height:32px;}
@@ -413,7 +415,7 @@
 <!-- ===================== HEADER ===================== -->
 <header class="site">
   <div class="wrap">
-    <a href="#top" class="brand">
+    <a href="#top" class="brand" id="brand-logo">
       <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
         <defs>
           <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="1">
@@ -866,6 +868,15 @@
 <script>
 (function(){
   var WA_NUMBER = "5538984176278";
+
+  // logo sempre volta ao topo da pagina, mesmo com o header fixo
+  var brandLogo = document.getElementById('brand-logo');
+  if (brandLogo){
+    brandLogo.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
 
   // scroll reveal
   var revealEls = document.querySelectorAll('[data-reveal]');
